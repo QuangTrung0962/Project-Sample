@@ -1,0 +1,53 @@
+﻿@model PersonResponse
+@{
+	ViewBag.Title = "Delete Person";
+}
+
+<a href="~/persons/index" class="link-hover">Back to persons list</a>
+<h2>Delete Person</h2>
+
+<div class="center-box">
+	<form asp-action="Delete" asp-controller="Persons" method="post">
+
+		@*Truyen person id can update*@
+		<input type="hidden" asp-for="PersonId" />
+
+
+		@*PersonName*@  
+		<div class="form-field flex"> 
+			<div class="w-25">
+				<label for="PersonName" class="form-label pt">Person Name</label>
+			</div>
+			<div class="flex-1">
+				<input asp-for="PersonName" class="form-input" disabled="disabled"/>
+			</div>
+		</div>
+
+		@*Email*@
+		<div class="form-field flex">
+			<div class="w-25">
+				<label for="Email" class="form-label pt">Email</label>
+			</div>
+			<div class="flex-1">
+				<input type="email" asp-for="Email" class="form-input" disabled="disabled" />
+			</div>
+		</div>
+
+
+		@*Submit*@
+		<div class="form-field flex">
+			<div class="w-25">
+			</div>
+			<div class="flex-1">
+				<button type="submit" class="button button-red-back" 
+				onclick="return confirm('Are you sure want to delete this person: @Model.PersonName')">
+					Delete
+				</button>
+			</div>
+		</div>
+
+	</form>
+</div>
+
+
+
